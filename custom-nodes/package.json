@@ -1,0 +1,8 @@
+{
+  "name": "wippli-code-runner",
+  "version": "1.0.0",
+  "main": "CodeRunner.node.js",
+  "n8n": {
+    "nodes": ["CodeRunner.node.js"]
+  }
+}
