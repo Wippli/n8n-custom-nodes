@@ -6,14 +6,17 @@ USER root
 # Install community packages
 RUN npm install -g n8n-nodes-deepseek --force
 
-# Install TypeScript compiler for building custom nodes
+# Install build dependencies
 RUN npm install -g typescript
+RUN npm install -g n8n-workflow
 
 # Copy custom node files
 COPY custom-nodes/ /tmp/custom-nodes/
 
 # Build the custom node
 WORKDIR /tmp/custom-nodes
+RUN npm init -y
+RUN npm install n8n-workflow
 RUN tsc CodeRunner.node.ts --target es2020 --module commonjs --esModuleInterop --allowSyntheticDefaultImports
 
 # Install the custom node globally
